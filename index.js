@@ -99,6 +99,14 @@ const quiz = document.querySelector('#quiz')
 //seleciona elemento de template para as perguntas e respostas
 const template = document.querySelector('template')
 
+//cria um objeto de set que permite apenas itens unicos
+const corretas = new Set()
+
+const totalDePerguntas = perguntas.length
+const mostrarTotal = document.querySelector('#acertos span')
+//define o texto com template literals
+mostrarTotal.textContent = `${corretas.size} de ${totalDePerguntas}`
+
 //para cada pergunta dentro do array vamos adicionar os elementos na pagina
 for (const item of perguntas) {
   //clona o nó completo do template incluindo os filhos
@@ -114,6 +122,46 @@ for (const item of perguntas) {
 
     //substitui o texto de span para a resposta do index atual
     dt.querySelector('span').textContent = resposta
+
+    //atribui um name para o input
+    dt.querySelector('input').setAttribute(
+      'name',
+      `pergunta-${perguntas.indexOf(item)}`
+    )
+
+    //atribui um id ao input para funcionar com o label
+    dt.querySelector('input').setAttribute(
+      'id',
+      `pergunta-${perguntas.indexOf(item)}-resposta-${item.respostas.indexOf(
+        resposta
+      )}`
+    )
+
+    //define o for para o label
+    dt.querySelector('label').setAttribute(
+      'for',
+      `pergunta-${perguntas.indexOf(item)}-resposta-${item.respostas.indexOf(
+        resposta
+      )}`
+    )
+
+    //define o valor do input radio como o index da resposta atual
+    dt.querySelector('input').value = item.respostas.indexOf(resposta)
+
+    //acompanha a mudança nos inputs
+    dt.querySelector('input').onchange = event => {
+      //pega o valor selecionado no input clicado e verifica se é o correto
+      const estaCorreta = event.target.value == item.correta
+
+      //remove o item atual de corretas
+      corretas.delete(item)
+      if (estaCorreta) {
+        //adiciona se ele estiver correto
+        corretas.add(item)
+      }
+
+      mostrarTotal.textContent = `${corretas.size} de ${totalDePerguntas}`
+    }
 
     //escreve na tela adicionando o nó em dl
     quizItem.querySelector('dl').appendChild(dt)
