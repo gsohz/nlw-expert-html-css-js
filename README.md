@@ -1,4 +1,4 @@
-# Quiz
+# NLW EXPERT HTML CSS JS - Quiz
 
 Um projeto de aplicação front-end de um quiz para testar os seus conhecimentos e obter o retorno sobre da quantidade de questões acertadas.
 
