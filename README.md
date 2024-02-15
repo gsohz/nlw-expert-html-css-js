@@ -2,7 +2,8 @@
 
 Um projeto de aplicação front-end de um quiz para testar os seus conhecimentos e obter o retorno sobre da quantidade de questões acertadas.
 
-![image](https://github.com/gsohz/nlw-expert-html-css-js/assets/98726404/4a9075ba-1f33-4e77-9e3a-a1009897d411)
+![image](https://github.com/gsohz/nlw-expert-html-css-js/assets/98726404/62e3487f-fcfd-48a9-8be8-e5a435c08cf6)
+
 
 ## ⚙️ Funcionalidades
 
